@@ -24,6 +24,17 @@ resource "azurerm_subnet" "subnet6" {
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.example.name
   address_prefixes     = ["10.2.48.0/20"]
+
+  delegation {
+    name = "aks-delegation"
+
+    service_delegation {
+      actions = [
+        "Microsoft.Network/virtualNetworks/subnets/join/action",
+      ] 
+      name = "Microsoft.ContainerService/managedClusters"
+    }
+  }
 }
 
 resource "azurerm_subnet" "subnet7" {
