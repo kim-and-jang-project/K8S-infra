@@ -44,3 +44,20 @@ resource "azurerm_subnet" "subnet7" {
   address_prefixes     = ["10.2.64.0/20"]
 }
 
+resource "azurerm_subnet" "subnet8" {
+  name                 = "private_db_Subnet"
+  resource_group_name  = var.resource_group_name
+  virtual_network_name = azurerm_virtual_network.example.name
+  address_prefixes     = ["10.2.96.0/20"]
+
+  delegation {
+    name = "database-delegation"
+
+    service_delegation {
+      actions = [
+        "Microsoft.Network/virtualNetworks/subnets/join/action"
+      ] 
+      name = "Microsoft.DBforMySQL/flexibleServers"
+    }
+  }
+}

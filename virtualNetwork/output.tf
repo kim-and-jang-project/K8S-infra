@@ -10,10 +10,14 @@ output "gateway_subnet_id" {
   value = azurerm_subnet.subnet4.id
 }
 
-output "private_endpoint_Subnet" {
+output "private_endpoint_subnet_id" {
   value = azurerm_subnet.subnet7.id
 }
 
 output "vnet_id" {
   value = azurerm_virtual_network.example.id
+}
+
+output "private_db_subnet_id" {
+  value = azurerm_subnet.subnet8.id
 }

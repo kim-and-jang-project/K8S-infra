@@ -1,7 +1,7 @@
-variable "ARM_SUBSCRIPTION_ID" {
-    default = ""
+variable "db_administrator_login" {
+    default = "d"
 }
 
-variable "ARM_TENANT_ID" {
-    default = ""
+variable "db_administrator_password" {
+    default = "d"
 }
