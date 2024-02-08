@@ -9,7 +9,7 @@ resource "azurerm_mysql_flexible_server" "kimandjang" {
   private_dns_zone_id    = azurerm_private_dns_zone.kimandjang.id
   sku_name               = "B_Standard_B1ms"
   zone                   = 1
-
+  version                = "8.0.21"
   depends_on = [azurerm_private_dns_zone_virtual_network_link.kimandjang-dns-link]
 }
 
