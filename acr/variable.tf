@@ -7,6 +7,5 @@ variable "location" {
 }
 
 variable "acr_name" {
-        default = "smoothpassacr"
-  
+    default = "smoothpassacr"
 }

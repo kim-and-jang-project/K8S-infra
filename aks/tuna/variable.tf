@@ -21,3 +21,7 @@ variable "agw_id" {
 variable "agw_subnet_id" {
   default = ""
 }
+
+variable "attached_acr_id" {
+  default = ""
+}

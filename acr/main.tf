@@ -5,4 +5,5 @@ resource "azurerm_container_registry" "example" {
   sku                           = "Premium"
   public_network_access_enabled = false
   zone_redundancy_enabled       = true
+  admin_enabled = true
 }
