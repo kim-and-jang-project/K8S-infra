@@ -5,3 +5,8 @@ variable "location" {
 variable "resource_group_name" {
     default = "d7ea5ee9-b889-4313-bc2e-674254b074af"
 }
+
+variable "vnet_name" {
+    default = "myVNet"
+  
+}

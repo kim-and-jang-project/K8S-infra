@@ -78,7 +78,10 @@ resource "azurerm_application_gateway" "aks" {
       backend_http_settings, 
       http_listener, 
       probe, 
-      request_routing_rule
+      request_routing_rule,
+      ssl_certificate,
+      redirect_configuration,
+      frontend_port
     ]
   }
 }
