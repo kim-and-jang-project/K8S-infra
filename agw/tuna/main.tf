@@ -70,4 +70,15 @@ resource "azurerm_application_gateway" "aks" {
     backend_address_pool_name  = local.backend_address_pool_name
     backend_http_settings_name = local.http_setting_name
   }
+
+  lifecycle {
+    ignore_changes = [
+      tags, 
+      backend_address_pool, 
+      backend_http_settings, 
+      http_listener, 
+      probe, 
+      request_routing_rule
+    ]
+  }
 }
