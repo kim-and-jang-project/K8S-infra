@@ -8,14 +8,6 @@ locals {
   redirect_configuration_name    = "redirect-config"
 }
 
-resource "azurerm_public_ip" "agw" {
-  name                = "agw-ip"
-  resource_group_name = var.resource_group_name
-  location            = var.location
-  allocation_method   = "Static"
-  sku		      = "Standard"
-}
-
 resource "azurerm_application_gateway" "aks" {
   name                = "aks"
   resource_group_name = var.resource_group_name

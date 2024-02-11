@@ -35,7 +35,8 @@ resource "azurerm_kubernetes_cluster" "res-0" {
 #   monitor_metrics {
 #   }
 
-  ingress_application_gateway {
-    gateway_id = var.agw_id
-  } 
+ ingress_application_gateway {
+   gateway_id = var.agw_id
+ } 
 }
+
