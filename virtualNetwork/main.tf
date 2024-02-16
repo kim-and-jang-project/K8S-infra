@@ -61,3 +61,23 @@ resource "azurerm_subnet" "subnet8" {
     }
   }
 }
+
+resource "azurerm_subnet" "subnet9" {
+  name                 = "AKS_Pod_subnet2"
+  resource_group_name  = var.resource_group_name
+  virtual_network_name = azurerm_virtual_network.example.name
+  address_prefixes     = ["10.2.112.0/20"]
+
+  delegation {
+    name = "aks-delegation"
+
+    service_delegation {
+      actions = [
+        "Microsoft.Network/virtualNetworks/subnets/join/action",
+      ]
+      name    = "Microsoft.ContainerService/managedClusters"
+    }
+  }
+}
+
+

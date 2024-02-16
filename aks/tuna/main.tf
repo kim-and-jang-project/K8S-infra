@@ -11,13 +11,17 @@ resource "azurerm_kubernetes_cluster" "res-0" {
   default_node_pool {
     enable_auto_scaling = true
     max_count           = 2
-    min_count           = 2
+    min_count           = 1
     name                = "agentpool1"
     type                = "VirtualMachineScaleSets"
     vm_size             = "Standard_DS2_v2"
     pod_subnet_id       = var.pod_subnet_id
     vnet_subnet_id      = var.vnet_subnet_id
     zones               = ["1", "3"]
+    only_critical_addons_enabled = true
+    temporary_name_for_rotation = "testtemp"
+
+
   }
 
   network_profile {
@@ -40,3 +44,16 @@ resource "azurerm_kubernetes_cluster" "res-0" {
  } 
 }
 
+resource "azurerm_kubernetes_cluster_node_pool" "user_node_pool" {
+  name                  = "userpool1"
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.res-0.id
+  vm_size               = "Standard_DS2_v2"
+  pod_subnet_id         = var.pod_subnet_id_2
+  vnet_subnet_id        = var.vnet_subnet_id
+  node_count            = 2
+  enable_auto_scaling   = true
+  max_count             = 2
+  min_count             = 2
+  mode                  = "User"
+  zones               = ["1", "3"]
+}
