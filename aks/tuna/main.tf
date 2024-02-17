@@ -11,7 +11,7 @@ resource "azurerm_kubernetes_cluster" "res-0" {
   default_node_pool {
     enable_auto_scaling = true
     max_count           = 2
-    min_count           = 1
+    min_count           = 2
     name                = "agentpool1"
     type                = "VirtualMachineScaleSets"
     vm_size             = "Standard_DS2_v2"
@@ -52,7 +52,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "user_node_pool" {
   vnet_subnet_id        = var.vnet_subnet_id
   node_count            = 2
   enable_auto_scaling   = true
-  max_count             = 2
+  max_count             = 4
   min_count             = 2
   mode                  = "User"
   zones               = ["1", "3"]

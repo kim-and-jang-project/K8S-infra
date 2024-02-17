@@ -12,7 +12,7 @@ resource "azurerm_application_gateway" "aks" {
   name                = "aks"
   resource_group_name = var.resource_group_name
   location            = var.location
-
+  zones		      = ["1","2","3"]
   sku {
     name     = "Standard_v2"
     tier     = "Standard_v2"

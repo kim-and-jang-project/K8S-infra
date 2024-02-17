@@ -4,5 +4,6 @@ resource "azurerm_public_ip" "agw" {
   location            = var.location
   allocation_method   = "Static"
   sku                 = "Standard"
+  zones		      = ["1","2","3"]
 }
 
