@@ -1,7 +1,7 @@
 variable "db_administrator_login" {
-    default = "d"
+    default = "tuna"
 }
 
 variable "db_administrator_password" {
-    default = "d"
+    default = "tuna"
 }

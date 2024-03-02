@@ -1,6 +1,6 @@
-module "tuna-acr" {
-  source = "./acr"
+module "smoothpass-acr" {
+  source = "./acr/smoothpass"
   location = "koreacentral"
-  acr_name = "smooothpassacr"
-  resource_group_name = module.example-rg.name
+  acr_name = "smooothpass"
+  resource_group_name = module.smoothpass-k8s-rg.name
 }

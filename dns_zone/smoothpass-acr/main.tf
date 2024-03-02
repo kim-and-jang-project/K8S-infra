@@ -1,20 +1,20 @@
 # Create azure container registry private endpoint
-resource "azurerm_private_dns_zone" "acr_private_dns_zone" {
+resource "azurerm_private_dns_zone" "smoothpass-acr" {
   name                = "privatelink.azurecr.io"
   resource_group_name =  var.resource_group_name
 }
 
 # Create azure private dns zone virtual network link for acr private endpoint vnet
-resource "azurerm_private_dns_zone_virtual_network_link" "acr_private_dns_zone_virtual_network_link" {
+resource "azurerm_private_dns_zone_virtual_network_link" "smoothpass-acr-dns-k8s-network-link" {
   name                  = "private-dns-zone-vnet-link"
-  private_dns_zone_name = azurerm_private_dns_zone.acr_private_dns_zone.name
+  private_dns_zone_name = azurerm_private_dns_zone.smoothpass-acr.name
   resource_group_name   = var.resource_group_name
   virtual_network_id    = var.vnet_id
   #tags                  = var.tags
 }
 
 # Create azure private endpoint
-resource "azurerm_private_endpoint" "acr_private_endpoint" {
+resource "azurerm_private_endpoint" "smoothpass-acr" {
   name                = "private-endpoint"
   resource_group_name = var.resource_group_name
   location            = var.location
@@ -34,7 +34,7 @@ resource "azurerm_private_endpoint" "acr_private_endpoint" {
     name = "private-dns-zone-group"
     
     private_dns_zone_ids = [
-      azurerm_private_dns_zone.acr_private_dns_zone.id
+      azurerm_private_dns_zone.smoothpass-acr.id
     ]  
   }
  

@@ -12,6 +12,7 @@ terraform {
       key = "terraform.tfstate" #상태저장소 파일 이름
   }
 }
+
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}

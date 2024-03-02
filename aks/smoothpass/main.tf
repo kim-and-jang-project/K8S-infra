@@ -1,8 +1,8 @@
-resource "azurerm_kubernetes_cluster" "res-0" {
+resource "azurerm_kubernetes_cluster" "smoothpass" {
   azure_policy_enabled                = true
-  dns_prefix                          = "tuna"
+  dns_prefix                          = "smoothpass"
   location                            = var.location
-  name                                = "tuna"
+  name                                = "smoothpass"
   private_cluster_enabled             = true
   private_cluster_public_fqdn_enabled = true
   resource_group_name                 = var.resource_group_name
@@ -20,8 +20,6 @@ resource "azurerm_kubernetes_cluster" "res-0" {
     zones               = ["1", "3"]
     only_critical_addons_enabled = true
     temporary_name_for_rotation = "testtemp"
-
-
   }
 
   network_profile {
@@ -46,7 +44,7 @@ resource "azurerm_kubernetes_cluster" "res-0" {
 
 resource "azurerm_kubernetes_cluster_node_pool" "user_node_pool" {
   name                  = "userpool1"
-  kubernetes_cluster_id = azurerm_kubernetes_cluster.res-0.id
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.smoothpass.id
   vm_size               = "Standard_DS2_v2"
   pod_subnet_id         = var.pod_subnet_id_2
   vnet_subnet_id        = var.vnet_subnet_id

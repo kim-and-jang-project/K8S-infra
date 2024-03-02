@@ -8,8 +8,8 @@ locals {
   redirect_configuration_name    = "redirect-config"
 }
 
-resource "azurerm_application_gateway" "aks" {
-  name                = "aks"
+resource "azurerm_application_gateway" "smoothpass-ingress" {
+  name                = "smoothpass-ingress"
   resource_group_name = var.resource_group_name
   location            = var.location
   zones		      = ["1","2","3"]
@@ -31,7 +31,7 @@ resource "azurerm_application_gateway" "aks" {
 
   frontend_ip_configuration {
     name                 = local.frontend_ip_configuration_name
-    public_ip_address_id = azurerm_public_ip.agw.id
+    public_ip_address_id = azurerm_public_ip.smoothpass-ingress-agw.id
   }
 
   backend_address_pool {

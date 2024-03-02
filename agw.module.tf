@@ -1,6 +1,6 @@
-module "tuna-agw" {
-  source = "./agw/tuna"
+module "smoothpass-ingress-agw" {
+  source = "./agw/smoothpass"
   location = "koreacentral"
-  resource_group_name = module.tuna.node_resource_group_name
-  gateway_subnet_id = module.example-vn.gateway_subnet_id
+  resource_group_name = module.smoothpass-k8s-rg.name
+  gateway_subnet_id = module.smoothpass-k8s-network.gateway_subnet_id
 }
